@@ -1,20 +1,21 @@
 import { getFrameMetadata } from '@coinbase/onchainkit';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 const frameMetadata = getFrameMetadata({
   buttons: [
-      {label: 'Click to unlock', action: 'post_redirect'}
+    { label: 'Click to unlock', action: 'post_redirect' }
   ],
   image: 'https://redirect-frame.vercel.app/video.png',
   post_url: 'https://redirect-frame.vercel.app/api/frame',
 });
 
 export const metadata: Metadata = {
-  title: 'Redirect frame',
-  description: 'LFG',
+  title: 'Redirect Frame',
+  description: 'Unlock content with our redirect frame.',
   openGraph: {
-    title: 'Redirect frame',
-    description: 'LFG',
+    title: 'Redirect Frame',
+    description: 'Unlock content with our redirect frame.',
     images: ['https://redirect-frame.vercel.app/video.png'],
   },
   other: {
@@ -24,8 +25,11 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <>
-      <img src={'/video.png'}/>
-    </>
+    <Image 
+      src={'/video.png'} 
+      alt='Video thumbnail' 
+      width={500} // Adjust width as needed
+      height={300} // Adjust height as needed
+    />
   );
 }
